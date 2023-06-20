@@ -82,7 +82,7 @@ function App() {
   };
 
   const onQuickSort = () => {
-    quickSort(divSizes, divs, div_update, 0, arSize-1);
+    quickSort(divSizes, divs, div_update, 0, arSize-1); //check why it breaks sometimes
   };
 
   return (
@@ -95,6 +95,7 @@ function App() {
             <div class="array-size">
               <button onClick={() => setArSize(20)}>Small Array</button>
               <button onClick={() => setArSize(80)}>Large Array</button>
+              {/* need to fix */}
             </div>
 
             <button id="a_generate">Generate New Array!</button>
