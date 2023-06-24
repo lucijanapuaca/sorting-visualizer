@@ -4,6 +4,7 @@ import bubbleSort from "./sorts/bubble";
 import insertionSort from "./sorts/insertion";
 import selectionSort from "./sorts/selection";
 import quickSort from "./sorts/quick";
+import countingSort from "./sorts/counting";
 
 function App() {
   const inpAs = useRef();
@@ -11,35 +12,36 @@ function App() {
   const [divSizes, setDivSizes] = useState([]);
   const [divs, setDivs] = useState([]);
 
-  const [arSize, setArSize] = useState(20);
+  const [arSize] = useState(20); //je li ovo smeta za sortiranje velikih nizova
 
+  const generateDivSizes = (arSize) => {
+    const newDivSizes = [];
+    const newDivs = [];
+    
+    for (let i = 0; i < arSize; i++) {
+      const size = Math.floor(Math.random() * 0.5 * (80 - 20)) + 10;
+      newDivSizes.push(size);
+      
+      const div = (
+        <div
+          key={i}
+          style={{
+            margin: `0% ${0.1}%`,
+            backgroundColor: "blue",
+            width: `${100 / arSize - 2 * 0.1}%`,
+            height: `${size}%`,
+          }}
+        ></div>
+      );
+      newDivs.push(div);
+    }
+    
+    setDivSizes(newDivSizes);
+    setDivs(newDivs);
+  };
+  
   useEffect(() => {
-    const generateDivSizes = () => {
-      const newDivSizes = [];
-      const newDivs = [];
-      for (let i = 0; i < arSize; i++) {
-        const size = Math.floor(Math.random() * 0.5 * (80 - 20)) + 10;
-        newDivSizes.push(size);
-
-        const div = (
-          <div
-            key={i}
-            style={{
-              margin: `0% ${0.1}%`,
-              backgroundColor: "blue",
-              width: `${100 / arSize - 2 * 0.1}%`,
-              height: `${size}%`,
-            }}
-          ></div>
-        );
-        newDivs.push(div);
-      }
-
-      setDivSizes(newDivSizes);
-      setDivs(newDivs);
-    };
-
-    generateDivSizes();
+    generateDivSizes(arSize);
   }, [arSize, inpAs]);
 
   var delay_time = 10000 / (Math.floor(arSize / 10) * speed);
@@ -82,7 +84,11 @@ function App() {
   };
 
   const onQuickSort = () => {
-    quickSort(divSizes, divs, div_update, 0, arSize-1); //check why it breaks sometimes
+    quickSort(divSizes, divs, div_update, 0, arSize-1); //skuzit zasto puca
+  };
+
+  const onCountingSort = () => {
+    countingSort(arSize, divSizes, divs, div_update); //treba dovrsit
   };
 
   return (
@@ -90,15 +96,13 @@ function App() {
       <header>
         <nav>
           <div class="array-inputs">
-            <p>Size of the array:</p>
+            <p>Generate New Array</p>
             
             <div class="array-size">
-              <button onClick={() => setArSize(20)}>Small Array</button>
-              <button onClick={() => setArSize(80)}>Large Array</button>
-              {/* need to fix */}
+              <button onClick={() => generateDivSizes(20)}>Small Array</button>
+              <button onClick={() => generateDivSizes(80)}>Large Array</button> {/* ne sortira se dobro mozda zbog linije 15 */}
             </div>
-
-            <button id="a_generate">Generate New Array!</button>
+            
           </div>
 
           <div class="header_right">
@@ -109,7 +113,7 @@ function App() {
               <button onClick={() => onInsertionSort()}>Insertion</button>
               <button onClick={() => onSelectionSort()}>Selection</button>
               <button onClick={() => onQuickSort()}>Quick</button>
-              <button>Counting</button>
+              <button onClick={() => onCountingSort()}>Counting</button>
             </div>
           </div>
         </nav>

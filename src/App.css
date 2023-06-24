@@ -20,34 +20,43 @@ nav {
 }
 
 nav .array-inputs {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 60% 40%;
-      grid-template-columns: 60% 40%;
-  place-content: center;
-  padding: 5% 0%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
 }
 
-nav .array-inputs .array-size button {
+nav .array-size {
+  display: flex;
+  justify-content: center;
+}
+
+nav .array-size button {
+  padding: 8px 16px;
+  margin: 5px 10px;
+  font-size: 16px;
+  border: 2px solid white;
   background-color: transparent;
-  border: none;
   color: white;
-  outline: none;
-  padding: 3% 3%;
-  font-size: x-large;
+  cursor: pointer;
 }
 
-nav .array-inputs #a_generate {
+nav .array-size button:hover {
+  background-color: blue;
+  border-color: white;
+}
+
+nav .array-size button:focus {
+  outline: none;
+  border-color: none;
+}
+
+nav .array-inputs p {
   background-color: transparent;
   border: none;
   outline: none;
   color: white;
   padding: 4% 0% 0% 0%;
-  padding-left: 20%;
-}
-
-nav .array-inputs #a_generate:hover {
-  cursor: pointer;
 }
 
 nav .header_right {
@@ -117,14 +126,6 @@ section #array_container {
   display: flex;
   width: 100%;
 }
-
-/* section #Info_Cont2 {
-  padding: 20% 10%;
-}
-
-section #Info_Cont2 h3 {
-  text-decoration: underline;
-} */
 
 .hide {
   display: none;
