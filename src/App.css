@@ -41,9 +41,27 @@ nav .array-size button {
   cursor: pointer;
 }
 
-nav .array-size button:hover {
-  background-color: blue;
-  border-color: white;
+nav .array-type button:focus {
+  outline: none;
+  border-color: none;
+}
+
+nav .array-type {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+nav .array-type button {
+  padding: 8px 16px;
+  margin: 5px 10px;
+  font-size: 16px;
+  border: 2px solid white;
+  background-color: transparent;
+  color: white;
+  cursor: pointer;
+  width: 100%;
+  max-width: 180px;
 }
 
 nav .array-size button:focus {
@@ -51,31 +69,34 @@ nav .array-size button:focus {
   border-color: none;
 }
 
+nav .array-size .highlighted{
+  background-color: blue;
+}
+
 nav .array-inputs p {
   background-color: transparent;
   border: none;
   outline: none;
   color: white;
-  padding: 4% 0% 0% 0%;
+  padding: 0% 0% 3% 0%;
 }
 
-nav .header_right {
+nav .header-right {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
           flex-direction: column;
 }
 
-nav .header_right .nav-heading {
+nav .header-right .nav-heading {
   display: inline-block;
   font-size: xxx-large;
   padding: 3% 0%;
 }
 
-nav .header_right .algos button {
+nav .header-right .algos button {
   background-color: transparent;
   border: none;
   color: white;
@@ -84,32 +105,32 @@ nav .header_right .algos button {
   font-size: x-large;
 }
 
-nav .header_right .algos button:hover {
+nav .header-right .algos button:hover {
   background-color: blue;
   cursor: pointer;
 }
 
-nav .header_right .algos .butt_locked {
+nav .header-right .algos .butt_locked {
   background-color: transparent;
   cursor: pointer;
 }
 
-nav .header_right .algos .butt_locked:hover {
+nav .header-right .algos .butt_locked:hover {
   background-color: transparent;
   cursor: pointer;
 }
 
-nav .header_right .algos .butt_selected {
+nav .header-right .algos .butt_selected {
   background-color: white;
   color: green;
 }
 
-nav .header_right .algos .butt_selected:hover {
+nav .header-right .algos .butt_selected:hover {
   background-color: white;
   cursor: pointer;
 }
 
-nav .header_right .algos .butt_unselected:hover {
+nav .header-right .algos .butt_unselected:hover {
   background-color: blue;
   cursor: pointer;
 }
@@ -117,7 +138,6 @@ nav .header_right .algos .butt_unselected:hover {
 section {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 100%;
 }
 
 section #array_container {

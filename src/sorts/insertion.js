@@ -1,35 +1,35 @@
 
     const insertionSort = (arSize, divSizes, divs, div_update) => {
 
-      for (var j = 0; j < arSize; j++) {
-        div_update(divs[j], divSizes[j], "yellow"); //Color update
+      for (var i = 0; i < arSize; i++) {
+        div_update(divs[i], divSizes[i], "yellow");
   
-        var key = divSizes[j];
-        var i = j - 1;
-        while (i >= 0 && divSizes[i] > key) {
-          div_update(divs[i], divSizes[i], "red"); //Color update
-          div_update(divs[i + 1], divSizes[i + 1], "red"); //Color update
+        var key = divSizes[i];
+        var j = i - 1;
+        while (j >= 0 && divSizes[j] > key) {
+          div_update(divs[j], divSizes[j], "red");
+          div_update(divs[j + 1], divSizes[j + 1], "red");
   
-          divSizes[i + 1] = divSizes[i];
+          divSizes[j + 1] = divSizes[j];
   
-          div_update(divs[i], divSizes[i], "red"); //Height update
-          div_update(divs[i + 1], divSizes[i + 1], "red"); //Height update
+          div_update(divs[j], divSizes[j], "red");
+          div_update(divs[j + 1], divSizes[j + 1], "red");
   
-          div_update(divs[i], divSizes[i], "blue"); //Color update
-          if (i === j - 1) {
-            div_update(divs[i + 1], divSizes[i + 1], "yellow"); //Color update
+          div_update(divs[j], divSizes[j], "blue");
+          if (j === i - 1) {
+            div_update(divs[j + 1], divSizes[j + 1], "yellow");
           } else {
-            div_update(divs[i + 1], divSizes[i + 1], "blue"); //Color update
+            div_update(divs[j + 1], divSizes[j + 1], "blue");
           }
-          i -= 1;
+          j -= 1;
         }
-        divSizes[i + 1] = key;
+        divSizes[j + 1] = key;
   
-        for (var t = 0; t < j; t++) {
-          div_update(divs[t], divSizes[t], "green"); //Color update
+        for (var t = 0; t < i; t++) {
+          div_update(divs[t], divSizes[t], "green");
         }
       }
-      div_update(divs[j - 1], divSizes[j - 1], "green");
+      div_update(divs[i - 1], divSizes[i - 1], "green");
     };
 
     export default insertionSort;

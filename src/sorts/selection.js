@@ -1,26 +1,22 @@
 
-
 const selectionSort = (arSize, divSizes, divs, div_update) => {
-    //   setTimeWorst("O(N^2)");
-    //   setTimeAverage("Θ(N^2)");
-    //   setTimeBest("Ω(N^2)");
   
       for (var i = 0; i < arSize - 1; i++) {
-        div_update(divs[i], divSizes[i], "red"); //Color update
+        div_update(divs[i], divSizes[i], "red");
   
         let index_min = i;
   
         for (var j = i + 1; j < arSize; j++) {
-          div_update(divs[j], divSizes[j], "yellow"); //Color update
+          div_update(divs[j], divSizes[j], "yellow");
   
           if (divSizes[j] < divSizes[index_min]) {
             if (index_min !== i) {
-              div_update(divs[index_min], divSizes[index_min], "blue"); //Color update
+              div_update(divs[index_min], divSizes[index_min], "blue");
             }
             index_min = j;
-            div_update(divs[index_min], divSizes[index_min], "red"); //Color update
+            div_update(divs[index_min], divSizes[index_min], "red");
           } else {
-            div_update(divs[j], divSizes[j], "blue"); //Color update
+            div_update(divs[j], divSizes[j], "blue");
           }
         }
   
@@ -29,13 +25,14 @@ const selectionSort = (arSize, divSizes, divs, div_update) => {
           divSizes[index_min] = divSizes[i];
           divSizes[i] = temp;
   
-          div_update(divs[index_min], divSizes[index_min], "red"); //Height update
-          div_update(divs[i], divSizes[i], "red"); //Height update
-          div_update(divs[index_min], divSizes[index_min], "blue"); //Color update
+          div_update(divs[index_min], divSizes[index_min], "red");
+          div_update(divs[i], divSizes[i], "red");
+          div_update(divs[index_min], divSizes[index_min], "blue");
         }
-        div_update(divs[i], divSizes[i], "green"); //Color update
+        div_update(divs[i], divSizes[i], "green");
       }
-      div_update(divs[i], divSizes[i], "green"); //Color update
+      div_update(divs[i], divSizes[i], "green");
     };
 
     export default selectionSort;
+
